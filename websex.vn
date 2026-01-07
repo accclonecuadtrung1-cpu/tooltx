@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Loading...</title>
+<style>
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    background:black;
+    color:#00ff00;
+    font-family: monospace;
+    overflow:hidden;
+}
+.center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+.hidden{display:none;}
+.cat{
+    font-size:60px;
+    display:inline-block;
+    animation: spin 1.5s linear infinite;
+}
+@keyframes spin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+.blink{
+    animation: blink 1s infinite;
+}
+@keyframes blink{
+    50%{opacity:0}
+}
+button{
+    padding:15px 25px;
+    font-size:18px;
+    background:#00ff00;
+    border:none;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="center" id="start">
+    <button onclick="start()">OPEN APP</button>
+</div>
+
+<div class="center hidden" id="hack">
+<pre>
+  ██╗  ██╗ █████╗  ██████╗██╗  ██╗
+  ██║  ██║██╔══██╗██╔════╝██║ ██╔╝
+  ███████║███████║██║     █████╔╝ 
+  ██╔══██║██╔══██║██║     ██╔═██╗ 
+  ██║  ██║██║  ██║╚██████╗██║  ██╗
+  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
+</pre>
+
+<div class="cat">🐱</div>
+<div class="cat">🐱</div>
+<div class="cat">🐱</div>
+
+<p class="blink">ACCESSING ACCOUNT...</p>
+<p id="log"></p>
+</div>
+
+<script>
+function start(){
+    document.documentElement.requestFullscreen();
+    document.getElementById("start").classList.add("hidden");
+    document.getElementById("hack").classList.remove("hidden");
+
+    let log = document.getElementById("log");
+    let i=0;
+    let msgs=[
+        "Connecting to server...",
+        "Bypassing security...",
+        "Injecting payload...",
+        "Decrypting password...",
+        "ERROR ❌",
+        "ĐÂY CHỈ LÀ WEB TROLL 😆",
+        "ĐỪNG BẤM LINK LẠ!"
+    ];
+
+    let t=setInterval(()=>{
+        log.innerText += msgs[i] + "\n";
+        i++;
+        if(i>=msgs.length) clearInterval(t);
+    },1000);
+}
+</script>
+
+</body>
+</html>
